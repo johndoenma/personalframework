@@ -22,7 +22,9 @@ CSS TABLE OF CONTENTS
     # FOOTER
 
 # CUSTOM STYLING
+    # CUSTOM HELPERS
     # CUSTOM TYPE BLOCK/SPECIMEN
+    # CUSTOM ANIMATIONS
 
 */
 
@@ -40,9 +42,9 @@ CSS TABLE OF CONTENTS
     --color-links: rgb(51 102 204 / 1);
     --color-links-dark: rgb(0 51 153 / 1);
     --color-accent-color: rgb(175, 33, 191);
-    --color-header-bg: transparent;
+    --color-header-bg: rgb(105, 0, 102);
     --color-header-links: rgb(255, 255, 255);
-    --color-hero-bg: rgb(105, 0, 102);
+    --color-hero-bg: rgb(63, 15, 61);
     --color-footer-bg: rgba(0, 0, 0, 1);
     --color-footer-text: rgb(255, 255, 255);
     --color-footer-links: rgb(245, 178, 255);
@@ -193,19 +195,18 @@ img {
 
 /* SITE HEADER  */
 .site-header {
-    background-color: var(--color-header-bg);
+    position: absolute;
+    width: 100%;
+    background: none;
     padding: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
-    width: 100%;
 }
 .site-header .site-logo {
     display: flex;
     align-items: center;
     gap: 1em;
-    padding: 0 10px;
 }
 .site-header img {
     display: block;
@@ -241,21 +242,17 @@ section {
 
 /* HERO SECTION */
 .hero {
+    padding-top: 8em;
     background: var(--color-hero-bg);
-    padding-top: 6em;
-    color: white;
-    padding-top: 9em;
     min-height: 100vh;
-    display: grid;
-    place-items: center;
-}
-
-.hero,
-.hero h1, 
-.hero h2 {
+    display: flex;
+    align-items: center;
     color: white;
 }
 
+.hero h1 {
+    color: white;
+}
 
 /* SITE FOOTER */
 .site-footer {
@@ -285,17 +282,11 @@ section {
 /* ----- CUSTOM STYLING -------- */
 /* ----------------------------- */
 
-/* HELPERS */
+/* CUSTOM HELPERS */
 .hide-visually {
     position: absolute;
     top: -9999px;
     left: -9999px;
-}
-
-.full-height-section {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
 }
 
 /* CUSTOM TYPE BLOCK: HEADLINE AND SUB HEADLINE */
@@ -311,63 +302,62 @@ section {
     margin: 1rem 0;
 }
 
-/* CUSTOM ANIMATION */
+/* ANIMATION */
 
-.animate-in-from-left {
+.fade-in {
     opacity: 0;
-    transform: translateX(-100px);
-    animation-name: from-left;
-    animation-duration: .4s;
+    animation-name: my-fade-in;
+    animation-duration: 2s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
 }
-@keyframes from-left {
-    0% {
+
+@keyframes my-fade-in {
+    from {
         opacity: 0;
-        transform: translateX(-100px);
     }
-    100% {
+    to {
+        opacity: 1; 
+    }
+}
+
+.fade-and-slide-in-from-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation-name: my-fade-and-slide-in-from-left;
+    animation-duration: .7s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes my-fade-and-slide-in-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-.animate-in-from-bottom {
+.fade-and-slide-up-from-bottom {
     opacity: 0;
-    transform: translateY(100px);
-    animation-name: from-bottom;
-    animation-duration: .4s;
+    transform: translateX(-40px);
+    animation-name: my-fade-and-slide-up-from-bottom;
+    animation-duration: .7s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
 }
-@keyframes from-bottom {
-    0% {
+
+@keyframes my-fade-and-slide-up-from-bottom {
+    from {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(40px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-
-.animate-in-from-middle {
-    opacity: 0;
-    transform: scale(.9);
-    animation-name: from-middle;
-    animation-duration: .4s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-}
-@keyframes from-middle {
-    0% {
-        opacity: 0;
-        transform: scale(.9);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
     }
 }
 
